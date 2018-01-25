@@ -44,3 +44,5 @@
 # All other extensions not explicitly mentioned here are left for Git to
 # handle automatically.
 # You must not rely on them having a particular line ending style!
+
+Embedded[[:space:]]MediaPlayer[[:space:]]Object.rtf filter=lfs diff=lfs merge=lfs -text
