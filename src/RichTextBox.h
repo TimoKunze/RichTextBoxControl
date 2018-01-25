@@ -7191,7 +7191,7 @@ protected:
 		///     get_FormattingRectangleLeft, put_FormattingRectangleLeft,
 		///     get_FormattingRectangleTop, put_FormattingRectangleTop,
 		///     get_FormattingRectangleWidth, put_FormattingRectangleWidth
-		WTL::CRect formattingRectangle;
+		CRect formattingRectangle;
 		/// \brief <em>Holds the \c GrowNAryOperators property's setting</em>
 		///
 		/// \sa get_GrowNAryOperators, put_GrowNAryOperators

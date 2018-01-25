@@ -465,7 +465,14 @@ STDMETHODIMP TextRange::put_URL(BSTR newValue)
 		CComQIPtr<ITextRange2> pTextRange2 = properties.pTextRange;
 		if(pTextRange2) {
 			if(newValue && SysStringLen(newValue) > 0) {
-				WTL::CString tmp = newValue;
+				LPTSTR pURL;
+				#ifdef UNICODE
+					pURL = OLE2W(newValue);
+				#else
+					COLE2T converter(newValue);
+					pURL = converter;
+				#endif
+				CString tmp = pURL;
 				if(tmp.GetAt(0) != TEXT('\"')) {
 					tmp = TEXT('\"') + tmp;
 				}

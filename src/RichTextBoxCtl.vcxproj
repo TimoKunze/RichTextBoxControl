@@ -509,7 +509,7 @@
     <ClCompile Include="MouseHookProvider.cpp" />
     <ClCompile Include="RichTextBoxCtl.cpp" />
     <ClCompile Include="RichTextBox.cpp" />
-    <ClCompile Include="CWindowEx.cpp" />
+    <ClCompile Include="CWindowEx2.cpp" />
     <ClCompile Include="EnumOLEVERB.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="OLEObject.cpp" />
@@ -640,7 +640,7 @@
     <ClInclude Include="ClassFactory.h" />
     <ClInclude Include="RichTextBox.h" />
     <ClInclude Include="CompilerFlags.h" />
-    <ClInclude Include="CWindowEx.h" />
+    <ClInclude Include="CWindowEx2.h" />
     <ClInclude Include="DispIDs.h" />
     <ClInclude Include="EnumOLEVERB.h" />
     <ClInclude Include="helpers.h" />

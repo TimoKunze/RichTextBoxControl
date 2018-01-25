@@ -1685,7 +1685,7 @@ HIMAGELIST RichTextBox::CreateLegacyDragImage(ITextRange* pTextRange, LPPOINT pU
 	maskMemoryDC.CreateCompatibleDC(hCompatibleDC);
 
 	// calculate the bounding rectangle of the text
-	WTL::CRect textBoundingRect;
+	CRect textBoundingRect;
 	// TODO: Make this work with sub-ranges.
 	if(SUCCEEDED(pTextRange->GetPoint(tomClientCoord | tomAllowOffClient | (tomStart + TA_TOP + TA_LEFT), &textBoundingRect.left, &textBoundingRect.top)) && SUCCEEDED(pTextRange->GetPoint(tomClientCoord | tomAllowOffClient | (tomEnd + TA_BOTTOM + TA_RIGHT), &textBoundingRect.right, &textBoundingRect.bottom))) {
 		if(pBoundingRectangle) {
@@ -1882,7 +1882,7 @@ BOOL RichTextBox::CreateLegacyOLEDragImage(ITextRange* pTextRange, LPSHDRAGIMAGE
 			pDragImage->crColorKey = RGB(0xF4, 0x00, 0x00);
 			CBrush backroundBrush;
 			backroundBrush.CreateSolidBrush(pDragImage->crColorKey);
-			memoryDC.FillRect(WTL::CRect(0, 0, bitmapWidth, bitmapHeight), backroundBrush);
+			memoryDC.FillRect(CRect(0, 0, bitmapWidth, bitmapHeight), backroundBrush);
 			ImageList_Draw(hImageList, 0, memoryDC, 0, 0, ILD_NORMAL);
 
 			// clean up
@@ -2399,9 +2399,9 @@ STDMETHODIMP RichTextBox::GetContextMenu(WORD selectionType, LPOLEOBJECT pObject
 	} else if(triggeredByKeyboard) {
 		if(pCharRange->cpMin == 0 && pCharRange->cpMax == -1) {
 			// everything is selected
-			WTL::CRect clientRectangle;
+			CRect clientRectangle;
 			GetClientRect(&clientRectangle);
-			WTL::CPoint centerPoint = clientRectangle.CenterPoint();
+			CPoint centerPoint = clientRectangle.CenterPoint();
 			menuPosition.x = centerPoint.x;
 			menuPosition.y = centerPoint.y;
 		} else {
@@ -8774,9 +8774,9 @@ LRESULT RichTextBox::OnMouseMove(UINT /*message*/, WPARAM wParam, LPARAM lParam,
 			if(clickRectHeight < 4) {
 				clickRectHeight = 4;
 			}
-			WTL::CRect rc(dragDropStatus.candidate.position.x - clickRectWidth, dragDropStatus.candidate.position.y - clickRectHeight, dragDropStatus.candidate.position.x + clickRectWidth, dragDropStatus.candidate.position.y + clickRectHeight);
+			CRect rc(dragDropStatus.candidate.position.x - clickRectWidth, dragDropStatus.candidate.position.y - clickRectHeight, dragDropStatus.candidate.position.x + clickRectWidth, dragDropStatus.candidate.position.y + clickRectHeight);
 
-			if(!rc.PtInRect(WTL::CPoint(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)))) {
+			if(!rc.PtInRect(CPoint(GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam)))) {
 				SHORT button = 0;
 				SHORT shift = 0;
 				WPARAM2BUTTONANDSHIFT(-1, button, shift);
@@ -8932,7 +8932,7 @@ LRESULT RichTextBox::OnSetCursor(UINT /*message*/, WPARAM /*wParam*/, LPARAM /*l
 	BOOL setCursor = FALSE;
 
 	// Are we really over the control?
-	WTL::CRect clientArea;
+	CRect clientArea;
 	GetClientRect(&clientArea);
 	ClientToScreen(&clientArea);
 	DWORD position = GetMessagePos();
@@ -9085,7 +9085,7 @@ LRESULT RichTextBox::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, LPA
 {
 	LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
-	WTL::CRect windowRectangle = m_rcPos;
+	CRect windowRectangle = m_rcPos;
 	/* Ugly hack: We depend on this message being sent without SWP_NOMOVE at least once, but this requirement
 	              not always will be fulfilled. Fortunately pDetails seems to contain correct x and y values
 	              even if SWP_NOMOVE is set.
@@ -9944,8 +9944,8 @@ inline HRESULT RichTextBox::Raise_OLEDragEnter(IDataObject* pData, DWORD* pEffec
 	if(properties.dragScrollTimeBase != 0) {
 		/* Use a 16 pixels wide border around the client area as the zone for auto-scrolling.
 		   Are we within this zone? */
-		WTL::CPoint mousePos(mousePosition.x, mousePosition.y);
-		WTL::CRect noScrollZone(0, 0, 0, 0);
+		CPoint mousePos(mousePosition.x, mousePosition.y);
+		CRect noScrollZone(0, 0, 0, 0);
 		GetClientRect(&noScrollZone);
 		BOOL isInScrollZone = noScrollZone.PtInRect(mousePos);
 		if(isInScrollZone) {
@@ -10071,8 +10071,8 @@ inline HRESULT RichTextBox::Raise_OLEDragMouseMove(DWORD* pEffect, DWORD keyStat
 	if(properties.dragScrollTimeBase != 0) {
 		/* Use a 16 pixels wide border around the client area as the zone for auto-scrolling.
 		   Are we within this zone? */
-		WTL::CPoint mousePos(mousePosition.x, mousePosition.y);
-		WTL::CRect noScrollZone(0, 0, 0, 0);
+		CPoint mousePos(mousePosition.x, mousePosition.y);
+		CRect noScrollZone(0, 0, 0, 0);
 		GetClientRect(&noScrollZone);
 		BOOL isInScrollZone = noScrollZone.PtInRect(mousePos);
 		if(isInScrollZone) {
@@ -11226,11 +11226,11 @@ HitTestConstants RichTextBox::HitTest(LONG x, LONG y)
 	HitTestConstants ret = static_cast<HitTestConstants>(0);
 
 	// Are we outside the window?
-	WTL::CRect windowRectangle;
+	CRect windowRectangle;
 	GetWindowRect(&windowRectangle);
 	ScreenToClient(&windowRectangle);
 	if(windowRectangle.PtInRect(pt)) {
-		WTL::CRect lineRectangle;
+		CRect lineRectangle;
 		BOOL isOverText = FALSE;
 
 		// Retrieve the bounding rectangle of the line that the point belongs to.
@@ -11274,7 +11274,7 @@ HitTestConstants RichTextBox::HitTest(LONG x, LONG y)
 				// set isOverSelection
 				CComPtr<ITextRange> pSelRange = NULL;
 				if(SUCCEEDED(pTextSelection->GetDuplicate(&pSelRange)) && pSelRange && selection.cpMin != selection.cpMax && SUCCEEDED(pSelRange->MoveEnd(tomCharacter, -1, NULL))) {
-					WTL::CRect selectionBoundingRectangle;
+					CRect selectionBoundingRectangle;
 					if(SUCCEEDED(pSelRange->GetPoint(tomClientCoord | tomAllowOffClient | (tomStart + TA_TOP + TA_LEFT), &selectionBoundingRectangle.left, &selectionBoundingRectangle.top)) && SUCCEEDED(pSelRange->GetPoint(tomClientCoord | tomAllowOffClient | (tomStart + TA_BOTTOM + TA_RIGHT), &selectionBoundingRectangle.right, &selectionBoundingRectangle.bottom)) && selectionBoundingRectangle.PtInRect(pt)) {
 						// the position is over the first selected character
 						isOverSelection = TRUE;
@@ -11297,7 +11297,7 @@ HitTestConstants RichTextBox::HitTest(LONG x, LONG y)
 				if(SUCCEEDED(pTextRange->GetIndex(tomLine, &hitLineIndex)) && SUCCEEDED(pTextRange->GetDuplicate(&pLinkRange)) && pLinkRange && SUCCEEDED(pLinkRange->StartOf(tomCharFormat, tomExtend, NULL)) && SUCCEEDED(pLinkRange->EndOf(tomCharFormat, tomExtend, NULL))) {
 					BOOL retrieveBoundingRectangle = FALSE;
 					BOOL checkForLinkEffect = FALSE;
-					WTL::CRect linkBoundingRectangle;
+					CRect linkBoundingRectangle;
 					for(int i = 0; i < 2 && !retrieveBoundingRectangle; i++) {
 						LONG startLineIndex = 0;
 						LONG endLineIndex = 0;
