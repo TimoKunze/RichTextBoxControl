@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.TextParagraphTabs.1 = s 'TimoSoft TextParagraphTabs Class 1.0 (Unicode)'
+	{
+		CLSID = s '{D9EDCC0D-4125-4A11-94D6-2542EEB826E7}'
+	}
+	RichTextBoxCtlU.TextParagraphTabs = s 'TimoSoft TextParagraphTabs Class (Unicode)'
+	{
+		CLSID = s '{D9EDCC0D-4125-4A11-94D6-2542EEB826E7}'
+		CurVer = s 'RichTextBoxCtlU.TextParagraphTabs.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D9EDCC0D-4125-4A11-94D6-2542EEB826E7} = s 'TimoSoft TextParagraphTabs Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.TextParagraphTabs.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.TextParagraphTabs'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}

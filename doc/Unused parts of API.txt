@@ -1,0 +1,262 @@
+The following parts of the RichTextBox API (Office 2016) are not used:
+
+Control styles:
+---------------
+- ES_AUTOHSCROLL (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we use ECO_AUTOHSCROLL instead
+	-> actually we use it on control creation
+- ES_AUTOVSCROLL (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we use ECO_AUTOVSCROLL instead
+	-> actually we use it on control creation
+- ES_CENTER (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we provide ITextPara::GetAlignment/SetAlignment instead which is more powerful
+- ES_LEFT (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we provide ITextPara::GetAlignment/SetAlignment instead which is more powerful
+- ES_NOHIDESEL (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we use ECO_NOHIDESEL instead
+	-> actually we use it on control creation
+- ES_RIGHT (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we provide ITextPara::GetAlignment/SetAlignment instead which is more powerful
+- ES_SAVESEL
+- ES_SELECTIONBAR (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> not needed, we use ECO_SELECTIONBAR instead
+	-> actually we use it on control creation
+- ES_SUNKEN
+- ES_VERTICAL (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> Richedit.h states: "Not supported in RE 2.0/3.0"
+	-> not needed, we use ECO_VERTICAL instead
+- ES_WANTRETURN (https://msdn.microsoft.com/en-us/library/bb775464.aspx)
+	-> In VB6 applications it does not prevent the Default command button being clicked on Enter, so for VB6 it is not useful.
+- ES_EX_NOCALLOLEINIT
+
+Messages:
+---------
+- EM_CANPASTE (https://msdn.microsoft.com/en-us/library/bb787993.aspx)
+	-> not needed, we provide ITextRange::CanCopy instead which is more powerful
+- EM_CHARFROMPOS (https://msdn.microsoft.com/en-us/library/bb761566.aspx)
+	-> not needed, it is redundant to IRichTextBox::HitTest()
+- EM_CONVPOSITION (https://msdn.microsoft.com/en-us/library/hh298392.aspx)
+	-> "This message is not implemented."
+	-> probably has to do with far-east languages (according to the block of messages within which it is defined)
+- EM_DISPLAYBAND
+- EM_EMPTYUNDOBUFFER (https://msdn.microsoft.com/en-us/library/bb761568.aspx)
+	-> not needed, it is redundant to ITextDocument::Undo(tomFalse) + ITextDocument::Undo(tomTrue)
+- EM_EXGETSEL (https://msdn.microsoft.com/en-us/library/bb788001.aspx)
+	-> not needed, we provide ITextDocument::GetSelection, ITextRange::GetStart, and ITextRange::GetEnd instead
+- EM_EXLINEFROMCHAR (https://msdn.microsoft.com/en-us/library/bb788005.aspx)
+	-> not needed, we provide ITextDocument::Range and ITextRange::GetIndex instead
+- EM_EXSETSEL (https://msdn.microsoft.com/en-us/library/bb788007.aspx)
+	-> not needed, we provide ITextRange::Select instead
+- EM_FINDTEXT
+- EM_FINDTEXTEX
+- EM_FINDWORDBREAK
+- EM_FORMATRANGE
+- EM_GETAUTOURLDETECT
+- EM_[G|S]ETBIDIOPTIONS
+- EM_[G|S]ETCHARFORMAT
+- EM_GETIMECOLOR (https://msdn.microsoft.com/en-us/library/bb788034.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_GETIMEOPTIONS (https://msdn.microsoft.com/en-us/library/bb788038.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_GETIMEPROPERTY (https://msdn.microsoft.com/en-us/library/bb788039.aspx)
+	-> Seems quite old (Windows 3.1/95 times)
+	-> EM_SETIMEPROPERTY is not defined, maybe does not even exist
+	-> can be used easily via SendMessage()
+- EM_[G|S]ETLANGOPTIONS
+- EM_[G|S]ETPARAFORMAT
+- EM_[G|S]ETPAGE
+- EM_GETPUNCTUATION (https://msdn.microsoft.com/en-us/library/bb774184.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_[G|S]ETQUERYRTFOBJ
+- EM_[G|S]ETSCROLLPOS
+- EM_GETSELTEXT (https://msdn.microsoft.com/en-us/library/bb774190.aspx)
+	-> not needed, we provide ITextDocument::GetSelection and ITextRange::GetText instead
+- EM_[G|S]ETTEXTEX
+- EM_GETTEXTLENGTHEX
+- EM_[G|S]ETTEXTMODE
+- EM_GETTEXTRANGE (https://msdn.microsoft.com/en-us/library/bb774199.aspx)
+	-> not needed, we provide ITextRange::GetText instead
+- EM_[G|S]ETVIEWKIND
+- EM_[G|S]ETTYPOGRAPHYOPTIONS
+- EM_[G|S]ETWORDBREAKPROCEX
+- EM_[G|S]ETWORDWRAPMODE
+- EM_HIDESELECTION
+- EM_LINEINDEX (https://msdn.microsoft.com/en-us/library/bb761611.aspx)
+	-> not needed, we provide ITextDocument::Range, ITextRange::SetIndex, and ITextRange::GetStart instead
+- EM_LINELENGTH (https://msdn.microsoft.com/en-us/library/bb761613.aspx)
+	-> not needed, we provide ITextDocument::Range, ITextRange::SetIndex, ITextRange::GetStart, and ITextRange::GetEnd instead
+	-> it also does not work well, if the control has the ES_CENTER style
+- EM_OUTLINE
+- EM_PASTESPECIAL (https://msdn.microsoft.com/en-us/library/bb774214.aspx)
+	-> The only advantage over the QueryAcceptData event and ITextRange::Paste would be that the client app could insert objects as icons directly.
+	-> The OLEObject class allows switching the object to DVASPECT_ICON after insertion. This should be sufficient.
+- EM_POSFROMCHAR (https://msdn.microsoft.com/en-us/library/bb761631.aspx)
+	-> not needed, we provide ITextRange::GetPoint instead, which is much more precise
+- EM_REDO (https://msdn.microsoft.com/en-us/library/bb774218.aspx)
+	-> not needed, we provide ITextDocument::Redo instead
+- EM_SCROLLCARET (https://msdn.microsoft.com/en-us/library/bb761637.aspx)
+	-> not needed, we provide ITextRange::ScrollIntoView instead
+- EM_SETFONTSIZE (https://msdn.microsoft.com/en-us/library/bb774240.aspx)
+	-> Allows changing different font sizes at once while keeping the differences between the font sizes.
+	-> Therefore we probably should implement it, although it works for the currently selected text range only.
+- EM_SETIMECOLOR (https://msdn.microsoft.com/en-us/library/bb774244.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_SETIMEOPTIONS (https://msdn.microsoft.com/en-us/library/bb774248.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_SETIMEPROPERTY
+	-> not defined, maybe does not even exist
+	-> EM_GETIMEPROPERTY seems quite old (Windows 3.1/95 times)
+- EM_SETPALETTE
+- EM_SETPUNCTUATION (https://msdn.microsoft.com/en-us/library/bb774278.aspx)
+	-> "This message is supported only in Asian-language versions of Microsoft Rich Edit 1.0. It is not supported in any later versions."
+- EM_STREAMIN
+- EM_STREAMOUT
+- EM_UNDO (https://msdn.microsoft.com/en-us/library/bb761670.aspx)
+	-> not needed, we provide ITextDocument::Undo instead
+
+Notifications:
+--------------
+- EN_ALIGNLTR
+- EN_ALIGNRTL
+- EN_CORRECTTEXT
+- EN_DROPFILES
+- EN_IMECHANGE
+- EN_LOWFIRTF
+- EN_MSGFILTER
+- EN_OBJECTPOSITIONS (https://msdn.microsoft.com/en-us/library/bb787977.aspx)
+	-> Seems to be sent only when streaming data using EM_STREAMIN
+- EN_OLEOPFAILED
+- EN_PAGECHANGE
+- EN_PARAGRAPHEXPANDED
+- EN_PROTECTED
+- EN_SAVECLIPBOARD
+- EN_STOPNOUNDO
+
+Structures:
+-----------
+- TABLEROWPARMS::fWrap (https://msdn.microsoft.com/en-us/library/hh768761.aspx)
+	-> it's not clear what it is doing
+
+Flags:
+------
+- CFU_INVERT
+- ECO_READONLY
+- ECO_SAVESEL
+- ECO_WANTRETURN (https://msdn.microsoft.com/en-us/library/bb774254.aspx)
+	-> In VB6 applications it does not prevent the Default command button being clicked on Enter, so for VB6 it is not useful.
+- IMF_AUTOFONTSIZEADJUST
+- IMF_AUTOKEYBOARD
+- IMF_DISABLEAUTOBIDIAUTOKEYBOARD
+- IMF_IMEALWAYSSENDNOTIFY
+- IMF_IMECANCELCOMPLETE (https://msdn.microsoft.com/en-us/library/bb788040.aspx)
+	-> As of February 2016, no effect could be observed (tried with Rich Edit 8.0 on Windows 7).
+	-> Maybe it is not implemented anymore?
+	-> Code exists, but is deactivated
+- IMF_NOIMPLICITLANG
+- IMF_NOKBDLIDFIXUP
+- IMF_TKBPREDICTION (https://msdn.microsoft.com/en-us/library/bb788040.aspx)
+	-> It is available for Windows 8 and 8.1 only, therefore not very useful.
+	-> can be used easily via SendMessage()
+- IMF_TKBAUTOCORRECTION (https://msdn.microsoft.com/en-us/library/bb788040.aspx)
+	-> not defined in RichEdit.h, but according to Murray Sargent it is 0x2000 (and therefore equal to IMF_IMEUIINTEGRATION)
+	-> Tests on Windows 8.1 with an emulated touch keyboard revealed that this flag does not seem to be implemented.
+	-> Code exists, but is deactivated
+- IMF_IMEUIINTEGRATION (not documented)
+	-> As of February 2016, no effect could be observed (tried with Rich Edit 7.5 on Windows 8.1).
+	-> definition conflicts with IMF_TKBAUTOCORRECTION
+- IMF_UIFONTS
+- SES_ALLOWBEEPS (not documented)
+	-> it's not clear what it is doing
+- SES_BIDI (https://msdn.microsoft.com/en-us/library/bb788031.aspx)
+	-> Seems to be useful only with a custom implementation of ITextHost.
+- SES_CUSTOMLOOK (not documented)
+	-> it's not clear what it is doing
+- SES_DEFAULTLATINLIGA
+- SES_EMULATE10 (https://msdn.microsoft.com/en-us/library/bb788031.aspx)
+	-> Why should we emulate Rich Edit 1.0 nowadays?
+- SES_EX_HANDLEFRIENDLYURL (https://msdn.microsoft.com/en-us/library/hh768367.aspx)
+	-> According to https://blogs.msdn.com/b/murrays/archive/2009/09/24/richedit-friendly-name-hyperlinks.aspx this flag does not work if TO_ADVANCEDTYPOGRAPHY is active.
+	-> Does not seem to work at all. Maybe on Windows 7 and newer (or with Unicode) TO_ADVANCEDTYPOGRAPHY cannot be deactivated anymore?
+- SES_LBSCROLLNOTIFY
+	-> Probably used by REListBox20W and RECombobox20W only.
+- SES_MAPCPS (https://msdn.microsoft.com/en-us/library/bb788031.aspx)
+	-> "Obsolete. Do not use."
+- SES_NOFOCUSLINKNOTIFY (not documented)
+- SES_USEAIMM (https://msdn.microsoft.com/en-us/library/bb788031.aspx)
+	-> As of February 2016, no visible effect could be observed (tried with Rich Edit 8.0).
+	-> Maybe it is not implemented anymore?
+- SES_USECRLF (https://msdn.microsoft.com/en-us/library/bb788031.aspx)
+	-> "Obsolete. Do not use."
+- SES_XLTCRCRLFTOCR
+
+Functions:
+----------
+- AutoCorrectProc
+- EditStreamCallback (https://msdn.microsoft.com/en-us/library/bb774368.aspx)
+	-> Required for EM_STREAMIN and EM_STREAMOUT which we do not support.
+- EditWordBreakProcEx
+- GetMathAlphanumeric (https://msdn.microsoft.com/en-us/library/hh780353.aspx)
+	-> It's not clear what it is doing.
+	-> Might be relevant for Rich Edit 6.0 math only.
+- GetMathAlphanumericCode (https://msdn.microsoft.com/en-us/library/hh780354.aspx)
+	-> It's not clear what it is doing.
+	-> Might be relevant for Rich Edit 6.0 math only.
+- MathBuildDown (https://msdn.microsoft.com/en-us/library/hh780443.aspx)
+	-> Seems to make math with Rich Edit 6.0 possible.
+	-> Would require quite some adjustments to the internal architecture.
+	-> Requires ITextRange2 probably in its Rich Edit 6.0 flavor, which is incompatible to Rich Edit 7.5.
+- MathBuildUp (https://msdn.microsoft.com/en-us/library/hh780445.aspx)
+	-> Seems to make math with Rich Edit 6.0 possible.
+	-> Would require quite some adjustments to the internal architecture.
+	-> Requires ITextRange2 probably in its Rich Edit 6.0 flavor, which is incompatible to Rich Edit 7.5.
+- MathTranslate (https://msdn.microsoft.com/en-us/library/hh780446.aspx)
+	-> Seems to make math with Rich Edit 6.0 possible.
+	-> Would require quite some adjustments to the internal architecture.
+	-> Requires ITextRange2 probably in its Rich Edit 6.0 flavor, which is incompatible to Rich Edit 7.5.
+- REExtendedRegisterClass (https://msdn.microsoft.com/en-us/library/hh298419.aspx)
+	-> REListBox20W and RECombobox20W are completely not documented and exceed the purpose of this control.
+
+Interface members:
+------------------
+- ITextDocument2::GetMathProperties(tomMathDocDiff*) (https://msdn.microsoft.com/en-us/library/hh768456.aspx)
+	-> As of June 2015, no visible effect could be observed (tried with Rich Edit 8.0, with dx/dy, Δx, integral sign).
+- ITextDocument2::GetMathProperties(tomMathDispDef) (https://msdn.microsoft.com/en-us/library/hh768456.aspx)
+	-> As of June 2015, no visible effect could be observed (tried with Rich Edit 8.0).
+- ITextDocument2::GetProperties(tom*Math*) (https://msdn.microsoft.com/en-us/library/hh768460.aspx)
+	-> As of June 2015, setting these properties did not have any visible effect (tried with Rich Edit 8.0).
+- ITextDocument2::GetProperties(tomEllipsis*) (https://msdn.microsoft.com/en-us/library/hh768460.aspx)
+	-> As of June 2015, setting these properties did not have any visible effect (tried with Rich Edit 8.0).
+- ITextFont2::GetEffects(tomInlineObjectStart) (https://msdn.microsoft.com/en-us/library/hh768498.aspx)
+	-> It seems to be never set. Have not tried whether it can be set.
+- ITextFont2::GetEffects(tomMathZoneNoBuildUp) (https://msdn.microsoft.com/en-us/library/hh768498.aspx)
+	-> It seems to be never set. As of June 2015, no visible effect could be observed when setting it (tried with Rich Edit 8.0).
+- ITextFont2::GetProperty(tomFontPropAlign) (https://msdn.microsoft.com/en-us/library/hh768524.aspx)
+	-> As of June 2015, setting this property does not fail (if only an operator is selected), but does not seem to have any effect
+	-> Might help: https://blogs.msdn.com/murrays/archive/2007/09/01/breaking-equations-into-multiple-lines.aspx
+- ITextFont2::GetProperty(tomFontStyle) (https://msdn.microsoft.com/en-us/library/hh768524.aspx)
+	-> As of June 2015, only tomFontStyleUpright and tomFontStyleItalic seem to be supported - both of them can as well be set using ITextFont2::SetItalic
+- ITextFont2::GetProperty(tomFontStretch) (https://msdn.microsoft.com/en-us/library/hh768524.aspx)
+	-> As of June 2015, this property seems to be supported, but does not seem to have any effect
+- ITextFont2::GetOldNumbers (https://msdn.microsoft.com/en-us/library/hh768521.aspx)
+	-> As of June 2015, this method does not seem to be supported by any Rich Edit version and it is not clear what "old numbers" refers to.
+- ITextFont2::SetOldNumbers (https://msdn.microsoft.com/en-us/library/hh768545.aspx)
+	-> As of June 2015, this method does not seem to be supported by any Rich Edit version and it is not clear what "old numbers" refers to.
+- ITextPara2::GetProperty(tomMathPara*) (https://msdn.microsoft.com/en-us/library/hh768593.aspx)
+	-> As of June 2015, only tomMathParaAlignCenterGroup seems interesting, but its purpose is not clear.
+- ITextRange2::GetMathFunctionType (https://msdn.microsoft.com/en-us/library/hh768638.aspx)
+	-> As of June 2015, there is no documentation about possible function names.
+- ITextRow::Apply (https://msdn.microsoft.com/en-us/library/hh768671.aspx)
+	-> The way we use it internally does not suit well with making it a public function.
+- ITextRow::GetCellIndex (https://msdn.microsoft.com/en-us/library/hh768681.aspx)
+	-> The way we use ITextRow internally does not suit well with making it a public function.
+- ITextRow::GetProperty (https://msdn.microsoft.com/en-us/library/hh768692.aspx)
+	-> "Currently, no extra properties are defined."
+- ITextRow::Reset (https://msdn.microsoft.com/en-us/library/hh768696.aspx)
+	-> can be used to resync an ITextRow object with the RTF content
+	-> The way we use ITextRow internally does not suit well with making it a public function.
+- ITextRow::SetCellCountCache (https://msdn.microsoft.com/en-us/library/hh768704.aspx)
+	-> As of June 2015, this method does not seem to be supported by any Rich Edit version.
+- ITextRow::SetCellIndex (https://msdn.microsoft.com/en-us/library/hh768705.aspx)
+	-> The way we use it internally does not suit well with making it a public function.
+- ITextRow::SetProperty (https://msdn.microsoft.com/en-us/library/hh768715.aspx)
+	-> "Currently, no extra properties are defined."

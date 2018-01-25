@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.TableRow.1 = s 'TimoSoft TableRow Class 1.0 (Unicode)'
+	{
+		CLSID = s '{6BF35782-4813-4A53-B747-FBE8D4D92E0F}'
+	}
+	RichTextBoxCtlU.TableRow = s 'TimoSoft TableRow Class (Unicode)'
+	{
+		CLSID = s '{6BF35782-4813-4A53-B747-FBE8D4D92E0F}'
+		CurVer = s 'RichTextBoxCtlU.TableRow.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6BF35782-4813-4A53-B747-FBE8D4D92E0F} = s 'TimoSoft TableRow Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.TableRow.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.TableRow'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}

@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlA.TextParagraph.1 = s 'TimoSoft TextParagraph Class 1.0 (ANSI)'
+	{
+		CLSID = s '{612F7074-4E80-4C5E-836D-2A37C932BE9D}'
+	}
+	RichTextBoxCtlA.TextParagraph = s 'TimoSoft TextParagraph Class (ANSI)'
+	{
+		CLSID = s '{612F7074-4E80-4C5E-836D-2A37C932BE9D}'
+		CurVer = s 'RichTextBoxCtlA.TextParagraph.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {612F7074-4E80-4C5E-836D-2A37C932BE9D} = s 'TimoSoft TextParagraph Class (ANSI)'
+		{
+			ProgID = s 'RichTextBoxCtlA.TextParagraph.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlA.TextParagraph'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{615602F5-ABB1-4073-8DD5-B46667E64ADF}'
+		}
+	}
+}

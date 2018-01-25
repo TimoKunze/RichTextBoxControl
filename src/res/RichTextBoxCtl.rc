@@ -1,0 +1,377 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+#ifdef _UNICODE
+  IDB_RICHTEXTBOX         BITMAP                  "RichTextBoxU.bmp"
+#else
+  IDB_RICHTEXTBOX         BITMAP                  "RichTextBoxA.bmp"
+#endif
+IDB_TOOLBARENABLED      BITMAP                  "ToolBar enabled.bmp"
+IDB_TOOLBARDISABLED     BITMAP                  "ToolBar disabled.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// JPG
+//
+
+IDB_ABOUT               JPG                      "About.jpg"
+IDB_PAYPAL              JPG                      "Paypal.jpg"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_REVISION1,VERSION_BUILD
+ PRODUCTVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_REVISION1,VERSION_BUILD
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Designed for Visual Basic. This software is freeware!"
+#ifdef _UNICODE
+            VALUE "FileDescription", "RichTextBox ActiveX Control (Unicode)"
+#else
+            VALUE "FileDescription", "RichTextBox ActiveX Control (ANSI)"
+#endif
+            VALUE "FileVersion", STRFILEVERSION
+#ifdef _UNICODE
+            VALUE "InternalName", "RichTextBoxCtlU.ocx"
+#else
+            VALUE "InternalName", "RichTextBoxCtlA.ocx"
+#endif
+            VALUE "LegalCopyright", "Copyright (C) 2018 Timo ""TimoSoft"" Kunze"
+#ifdef _UNICODE
+            VALUE "OriginalFilename", "RichTextBoxCtlU.ocx"
+#else
+            VALUE "OriginalFilename", "RichTextBoxCtlA.ocx"
+#endif
+            VALUE "ProductName", "TimoSoft RichTextBox"
+            VALUE "ProductVersion", STRPRODUCTVERSION
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+#ifdef _UNICODE
+  IDR_RICHTEXTBOXCTL              REGISTRY                "RichTextBoxCtlU.rgs"
+  IDR_RICHTEXTBOX                 REGISTRY                "RichTextBoxU.rgs"
+  IDR_TABLE                       REGISTRY                "TableU.rgs"
+  IDR_TABLECELL                   REGISTRY                "TableCellU.rgs"
+  IDR_TABLECELLS                  REGISTRY                "TableCellsU.rgs"
+  IDR_TABLEROW                    REGISTRY                "TableRowU.rgs"
+  IDR_TABLEROWS                   REGISTRY                "TableRowsU.rgs"
+  IDR_TEXTFONT                    REGISTRY                "TextFontU.rgs"
+  IDR_TEXTPARAGRAPH               REGISTRY                "TextParagraphU.rgs"
+  IDR_TEXTPARAGRAPHTAB            REGISTRY                "TextParagraphTabU.rgs"
+  IDR_TEXTPARAGRAPHTABS           REGISTRY                "TextParagraphTabsU.rgs"
+  IDR_TEXTRANGE                   REGISTRY                "TextRangeU.rgs"
+  IDR_TEXTSUBRANGES               REGISTRY                "TextSubRangesU.rgs"
+  IDR_OLEOBJECT                   REGISTRY                "OLEObjectU.rgs"
+  IDR_OLEOBJECTS                  REGISTRY                "OLEObjectsU.rgs"
+  IDR_OLEDATAOBJECT               REGISTRY                "OLEDataObjectU.rgs"
+#else
+  IDR_RICHTEXTBOXCTL              REGISTRY                "RichTextBoxCtlA.rgs"
+  IDR_RICHTEXTBOX                 REGISTRY                "RichTextBoxA.rgs"
+  IDR_TABLE                       REGISTRY                "TableA.rgs"
+  IDR_TABLECELL                   REGISTRY                "TableCellA.rgs"
+  IDR_TABLECELLS                  REGISTRY                "TableCellsA.rgs"
+  IDR_TABLEROW                    REGISTRY                "TableRowA.rgs"
+  IDR_TABLEROWS                   REGISTRY                "TableRowsA.rgs"
+  IDR_TEXTFONT                    REGISTRY                "TextFontA.rgs"
+  IDR_TEXTPARAGRAPH               REGISTRY                "TextParagraphA.rgs"
+  IDR_TEXTPARAGRAPHTAB            REGISTRY                "TextParagraphTabA.rgs"
+  IDR_TEXTPARAGRAPHTABS           REGISTRY                "TextParagraphTabsA.rgs"
+  IDR_TEXTRANGE                   REGISTRY                "TextRangeA.rgs"
+  IDR_TEXTSUBRANGES               REGISTRY                "TextSubRangesA.rgs"
+  IDR_OLEOBJECT                   REGISTRY                "OLEObjectA.rgs"
+  IDR_OLEOBJECTS                  REGISTRY                "OLEObjectsA.rgs"
+  IDR_OLEDATAOBJECT               REGISTRY                "OLEDataObjectA.rgs"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 338, 230
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "About RichTextBox..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,281,206,50,14
+    CONTROL         5,IDC_ABOUT,"Static",SS_BITMAP | SS_REALSIZEIMAGE,10,10,132,169,WS_EX_TRANSPARENT
+    LTEXT           "RichTextBox",IDC_NAME,124,10,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Version>",IDC_VERSION,124,21,207,26,0,WS_EX_TRANSPARENT
+    CONTROL         "Written by:",IDC_AUTHOR,"Static",WS_GROUP | 0x20,124,51,207,11
+    LTEXT           "<Authors>",IDC_AUTHORS,124,62,207,13,0,WS_EX_TRANSPARENT
+    LTEXT           "Thanks go to:",IDC_THANKS,124,82,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Thanks>",IDC_THANKSTO,124,93,207,33,0,WS_EX_TRANSPARENT
+    LTEXT           "Special Thanks go to:",IDC_SPECIALTHANKS,124,133,207,11,0,WS_EX_TRANSPARENT
+    CONTROL         "<SpecialThanks>",IDC_SPECIALTHANKSTO,"Static",WS_GROUP | 0x20,124,144,207,23
+    LTEXT           "Further information:",IDC_MORE,124,181,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Homepage>",IDC_HOMEPAGE,124,192,95,8,SS_NOTIFY,WS_EX_TRANSPARENT
+    LTEXT           "<Bugtracker>",IDC_BUGTRACKER,220,192,50,8,SS_NOTIFY,WS_EX_TRANSPARENT
+    CONTROL         6,IDC_PAYPAL,"Static",SS_BITMAP | SS_NOTIFY | SS_REALSIZEIMAGE,225,204,48,18,WS_EX_TRANSPARENT
+END
+
+IDD_COMMONPROPERTIES DIALOGEX 0, 0, 271, 136
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "&Disabled events:",IDC_STATIC,"Static",WS_GROUP | 0x20,7,7,53,8
+    CONTROL         "",IDC_DISABLEDEVENTSBOX,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,7,17,130,114
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+#ifdef UNICODE
+    "1 TYPELIB ""RichTextBoxCtlU.tlb""\r\n"
+#else
+    "1 TYPELIB ""RichTextBoxCtlA.tlb""\r\n"
+#endif
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_LOADSETTINGS        "Load settings from a file..."
+    IDS_SAVESETTINGS        "Save the settings to a file..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TITLECOMMONPROPERTIES "Common"
+    IDS_DOCSTRINGCOMMONPROPERTIES "Common Properties"
+    IDS_PROJNAME            "RichTextBoxCtl"
+END
+
+STRINGTABLE 
+BEGIN
+    IDPC_ACCESSIBILITY      "Accessibility"
+    IDPC_COLORS             "Colors"
+    IDPC_DRAGDROP           "Drag'n'Drop"
+    IDPC_IMEANDTSF          "IME and TSF"
+    IDPC_MATHZONES          "Math Zones"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_APPEARANCE2D        "%i - 2D"
+    IDP_APPEARANCE3D        "%i - 3D"
+    IDP_APPEARANCE3DLIGHT   "%i - 3D Light"
+    IDP_APPEARANCEDEFAULT   "%i - Default"
+    IDP_AUTOSCROLLINGNONE   "%i - None"
+    IDP_AUTOSCROLLINGVERTICAL "%i - Vertical"
+    IDP_AUTOSCROLLINGHORIZONTAL "%i - Horizontal"
+    IDP_AUTOSCROLLINGBOTH   "%i - Both"
+    IDP_BORDERSTYLENONE     "%i - None"
+    IDP_BORDERSTYLEFIXEDSINGLE "%i - Fixed Single"
+    IDP_CHARACTERCONVERSIONNONE "%i - None"
+    IDP_CHARACTERCONVERSIONLOWERCASE "%i - Lowercase"
+    IDP_CHARACTERCONVERSIONUPPERCASE "%i - Uppercase"
+    IDP_DENOTEEMPTYMATHARGUMENTSMANDATORYONLY "%i - Mandatory Only"
+    IDP_DENOTEEMPTYMATHARGUMENTSALWAYS "%i - Always"
+    IDP_DENOTEEMPTYMATHARGUMENTSNEVER "%i - Never"
+    IDP_HALIGNMENTLEFT      "%i - Left"
+    IDP_HALIGNMENTCENTER    "%i - Center"
+    IDP_HALIGNMENTRIGHT     "%i - Right"
+    IDP_IMECONVERSIONMODEDEFAULT      "%i - Default"
+    IDP_IMECONVERSIONMODEBIASFORNAMES      "%i - Bias for Names"
+    IDP_IMECONVERSIONMODENOCONVERSION      "%i - No Conversion"
+    IDP_IMEMODEINHERIT      "%i - Inherit"
+    IDP_IMEMODENOCONTROL    "%i - No Control"
+    IDP_IMEMODEON           "%i - On"
+    IDP_IMEMODEOFF          "%i - Off"
+    IDP_IMEMODEDISABLE      "%i - Disable"
+    IDP_IMEMODEHIRAGANA     "%i - Hiragana DBC"
+    IDP_IMEMODEKATAKANA     "%i - Katakana DBC"
+    IDP_IMEMODEKATAKANAHALF "%i - Katakana SBC"
+    IDP_IMEMODEALPHAFULL    "%i - Alphanumeric DBC"
+    IDP_IMEMODEALPHA        "%i - Alphanumeric SBC"
+    IDP_IMEMODEHANGULFULL   "%i - Hangul DBC"
+    IDP_IMEMODEHANGUL       "%i - Hangul SBC"
+    IDP_LIMITSLOCATIONONSIDE "%i - On Side"
+    IDP_LIMITSLOCATIONUNDERANDOVER "%i - Under and Over"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_MATHLINEBREAKBEHAVIORBEFORE "&H%X - Before Operators"
+    IDP_MATHLINEBREAKBEHAVIORAFTER "&H%X - After Operators"
+    IDP_MATHLINEBREAKBEHAVIORDUPMINUSMINUS "&H%X - Duplicate Operators (Minus -> Minus Minus)"
+    IDP_MATHLINEBREAKBEHAVIORDUPPLUSMINUS "&H%X - Duplicate Operators (Minus -> Plus Minus)"
+    IDP_MATHLINEBREAKBEHAVIORDUPMINUSPLUS "&H%X - Duplicate Operators (Minus -> Minus Plus)"
+    IDP_MOUSEPOINTERDEFAULT "%i - Default"
+    IDP_MOUSEPOINTERARROW   "%i - Arrow"
+    IDP_MOUSEPOINTERCROSS   "%i - Cross"
+    IDP_MOUSEPOINTERIBEAM   "%i - I-Cursor"
+    IDP_MOUSEPOINTERICON    "%i - Symbol"
+    IDP_MOUSEPOINTERSIZE    "%i - Size"
+    IDP_MOUSEPOINTERSIZENESW "%i - Size NE SW"
+    IDP_MOUSEPOINTERSIZENS  "%i - Size N S"
+    IDP_MOUSEPOINTERSIZENWSE "%i - Size NW SE"
+    IDP_MOUSEPOINTERSIZEEW  "%i - Size E W"
+    IDP_MOUSEPOINTERUPARROW "%i - Up-Arrow"
+    IDP_MOUSEPOINTERHOURGLASS "%i - Hourglass"
+    IDP_MOUSEPOINTERNODROP  "%i - Can't Drop"
+    IDP_MOUSEPOINTERARROWHOURGLASS "%i - Arrow + Hourglass"
+    IDP_MOUSEPOINTERARROWQUESTION "%i - Arrow + Questionmark"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_MOUSEPOINTERSIZEALL "%i - Size All"
+    IDP_MOUSEPOINTERHAND    "%i - Hand"
+    IDP_MOUSEPOINTERINSERTMEDIA "%i - Insert Media"
+    IDP_MOUSEPOINTERSCROLLALL "%i - Scroll All"
+    IDP_MOUSEPOINTERSCROLLN "%i - Scroll N"
+    IDP_MOUSEPOINTERSCROLLNE "%i - Scroll NE"
+    IDP_MOUSEPOINTERSCROLLE "%i - Scroll E"
+    IDP_MOUSEPOINTERSCROLLSE "%i - Scroll SE"
+    IDP_MOUSEPOINTERSCROLLS "%i - Scroll S"
+    IDP_MOUSEPOINTERSCROLLSW "%i - Scroll SW"
+    IDP_MOUSEPOINTERSCROLLW "%i - Scroll W"
+    IDP_MOUSEPOINTERSCROLLNW "%i - Scroll NW"
+    IDP_MOUSEPOINTERSCROLLNS "%i - Scroll N S"
+    IDP_MOUSEPOINTERSCROLLEW "%i - Scroll E W"
+    IDP_MOUSEPOINTERCUSTOM  "%i - Custom"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_OLEDRAGIMAGESTYLECLASSIC "%i - Classic (Always)"
+    IDP_OLEDRAGIMAGESTYLEAERO "%i - Aero (If Available)"
+    IDP_REGISTERFOROLEDRAGDROPNONE "%i - No Drag'n'Drop"
+    IDP_REGISTERFOROLEDRAGDROPNATIVE "%i - Native Drag'n'Drop"
+    IDP_REGISTERFOROLEDRAGDROPADVANCED "%i - Advanced Drag'n'Drop"
+    IDP_RICHEDITVERSIONALWAYSWINDOWS          "%i - Always Windows"
+    IDP_RICHEDITVERSIONOFFICEIFAVAILABLE      "%i - Office if available"
+    IDP_RICHEDITVERSIONOFFICEIFNEWER          "%i - Office if newer"
+    IDP_RIGHTTOLEFTNONE     "%i - None"
+    IDP_RIGHTTOLEFTTEXT     "%i - Text"
+    IDP_RIGHTTOLEFTLAYOUT   "%i - Layout"
+    IDP_RIGHTTOLEFTTEXTLAYOUT "%i - Text + Layout"
+    IDP_SCROLLBARSNONE      "%i - None"
+    IDP_SCROLLBARSVERTICAL  "%i - Vertical"
+    IDP_SCROLLBARSHORIZONTAL "%i - Horizontal"
+    IDP_SCROLLBARSBOTH      "%i - Both"
+    IDP_TEXTFLOWLTRTTB      "%i - Left to Right, Top to Bottom"
+    IDP_TEXTFLOWTTBRTL      "%i - Top to Bottom, Right to Left"
+    IDP_TEXTFLOWRTLBTT      "%i - Right to Left, Bottom to Top"
+    IDP_TEXTFLOWBTTLTR      "%i - Bottom to Top, Left to Right"
+    IDP_TEXTFLOWTTBLTR      "%i - Top to Bottom, Left to Right"
+    IDP_TEXTORIENTATIONHORIZONTAL      "%i - Horizontal"
+    IDP_TEXTORIENTATIONVERTICAL      "%i - Vertical"
+    IDP_TEXTORIENTATIONVERTICALWITHHORZFONT      "%i - Vertical with Horizontal Font"
+    IDP_TSFMODEBIASDEFAULT  "%i - No Mode Bias (Default)"
+    IDP_TSFMODEBIASTOFILENAME  "%i - Bias to a filename"
+    IDP_TSFMODEBIASTONAME   "%i - Bias to a name"
+    IDP_TSFMODEBIASTOREADING   "%i - Bias to the reading"
+    IDP_TSFMODEBIASTODATEORTIME   "%i - Bias to a date or time"
+    IDP_TSFMODEBIASTOCONVERSATION   "%i - Bias to a conversation"
+    IDP_TSFMODEBIASTONUMBER   "%i - Bias to a number"
+    IDP_TSFMODEBIASTOHIRAGANA   "%i - Bias to hiragana strings"
+    IDP_TSFMODEBIASTOKATAKANA   "%i - Bias to katakana strings"
+    IDP_TSFMODEBIASTOHANGUL   "%i - Bias to hangul characters"
+    IDP_TSFMODEBIASTOHALFWIDTHKATAKANA   "%i - Bias to half-width katakana strings"
+    IDP_TSFMODEBIASTOFULLWIDTHALPHA   "%i - Bias to full-width alphanumeric characters"
+    IDP_TSFMODEBIASTOHALFWIDTHALPHA   "%i - Bias to half-width alphanumeric characters"
+END
+
+STRINGTABLE 
+BEGIN
+    IDES_FORMATMISMATCH     "Specified format doesn't match format of data"
+    IDES_INVALIDOBJUSE      "Invalid object use"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#ifdef _UNICODE
+  1 TYPELIB "RichTextBoxCtlU.tlb"
+#else
+  1 TYPELIB "RichTextBoxCtlA.tlb"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

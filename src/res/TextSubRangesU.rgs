@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.TextSubRanges.1 = s 'TimoSoft TextSubRanges Class 1.0 (Unicode)'
+	{
+		CLSID = s '{AB6400B4-412F-415F-8721-B2D4DA37C022}'
+	}
+	RichTextBoxCtlU.TextSubRanges = s 'TimoSoft TextSubRanges Class (Unicode)'
+	{
+		CLSID = s '{AB6400B4-412F-415F-8721-B2D4DA37C022}'
+		CurVer = s 'RichTextBoxCtlU.TextSubRanges.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AB6400B4-412F-415F-8721-B2D4DA37C022} = s 'TimoSoft TextSubRanges Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.TextSubRanges.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.TextSubRanges'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}

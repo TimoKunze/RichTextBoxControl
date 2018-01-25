@@ -1,0 +1,1 @@
+The Hyphen library is part of the HunSpell project available at http://hunspell.sourceforge.net/.

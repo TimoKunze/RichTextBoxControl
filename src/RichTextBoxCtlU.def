@@ -1,0 +1,9 @@
+; RichTextBoxCtlU.def: Declares the module parameters. (Unicode version)
+
+LIBRARY      "RichTextBoxCtlU.ocx"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

@@ -1,0 +1,43 @@
+HKCR
+{
+	RichTextBoxCtlA.RichTextBox.1 = s 'TimoSoft RichTextBox Control 1.0 (ANSI)'
+	{
+		CLSID = s '{B13805F0-F513-4978-9BB9-0B2BA6C3E01D}'
+		'Insertable'
+	}
+	RichTextBoxCtlA.RichTextBox = s 'TimoSoft RichTextBox Control 1.0 (ANSI)'
+	{
+		CLSID = s '{B13805F0-F513-4978-9BB9-0B2BA6C3E01D}'
+		CurVer = s 'RichTextBoxCtlA.RichTextBox.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B13805F0-F513-4978-9BB9-0B2BA6C3E01D} = s 'TimoSoft RichTextBox Control 1.0 (ANSI)'
+		{
+			ProgID = s 'RichTextBoxCtlA.RichTextBox.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlA.RichTextBox'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Implemented Categories'
+			{
+				'{40FC6ED4-2438-11CF-A3DB-080036F12502}'
+				'{40FC6ED5-2438-11CF-A3DB-080036F12502}'
+				'{0DE86A57-2BAA-11CF-A229-00AA003D7352}'
+				'{0DE86A53-2BAA-11CF-A229-00AA003D7352}'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+				'1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{615602F5-ABB1-4073-8DD5-B46667E64ADF}'
+			'Version' = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.OLEDataObject.1 = s 'TimoSoft OLEDataObject Class 1.0 (Unicode)'
+	{
+		CLSID = s '{9DE587B1-9A1F-406C-91AF-B0466BD8FE3B}'
+	}
+	RichTextBoxCtlU.OLEDataObject = s 'TimoSoft OLEDataObject Class (Unicode)'
+	{
+		CLSID = s '{9DE587B1-9A1F-406C-91AF-B0466BD8FE3B}'
+		CurVer = s 'RichTextBoxCtlU.OLEDataObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9DE587B1-9A1F-406C-91AF-B0466BD8FE3B} = s 'TimoSoft OLEDataObject Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.OLEDataObject.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.OLEDataObject'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}

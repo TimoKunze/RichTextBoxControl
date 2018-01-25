@@ -1,0 +1,9 @@
+; RichTextBoxCtlA.def: Declares the module parameters. (ANSI version)
+
+LIBRARY      "RichTextBoxCtlA.ocx"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

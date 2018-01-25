@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.OLEObject.1 = s 'TimoSoft OLEObject Class 1.0 (Unicode)'
+	{
+		CLSID = s '{E9AB3381-146F-4FAC-B06F-6F420CF7AD07}'
+	}
+	RichTextBoxCtlU.OLEObject = s 'TimoSoft OLEObject Class (Unicode)'
+	{
+		CLSID = s '{E9AB3381-146F-4FAC-B06F-6F420CF7AD07}'
+		CurVer = s 'RichTextBoxCtlU.OLEObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E9AB3381-146F-4FAC-B06F-6F420CF7AD07} = s 'TimoSoft OLEObject Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.OLEObject.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.OLEObject'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}

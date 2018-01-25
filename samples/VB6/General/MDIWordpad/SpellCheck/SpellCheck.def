@@ -1,0 +1,6 @@
+LIBRARY	SpellCheck
+
+EXPORTS
+		HunSpellLoadHyphenationDictionary		@1
+		HunSpellFreeHyphenationDictionary		@2
+		HunSpellHyphenate										@3

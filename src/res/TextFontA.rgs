@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlA.TextFont.1 = s 'TimoSoft TextFont Class 1.0 (ANSI)'
+	{
+		CLSID = s '{35B513B8-688D-4F87-82FC-4EFA62F0B634}'
+	}
+	RichTextBoxCtlA.TextFont = s 'TimoSoft TextFont Class (ANSI)'
+	{
+		CLSID = s '{35B513B8-688D-4F87-82FC-4EFA62F0B634}'
+		CurVer = s 'RichTextBoxCtlA.TextFont.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {35B513B8-688D-4F87-82FC-4EFA62F0B634} = s 'TimoSoft TextFont Class (ANSI)'
+		{
+			ProgID = s 'RichTextBoxCtlA.TextFont.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlA.TextFont'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{615602F5-ABB1-4073-8DD5-B46667E64ADF}'
+		}
+	}
+}

@@ -1,0 +1,25 @@
+HKCR
+{
+	RichTextBoxCtlU.CommonProperties.1 = s 'TimoSoft CommonProperties Class 1.0 (Unicode)'
+	{
+		CLSID = s '{086BAE5B-794E-4A2D-81DD-BE899D9CCF4C}'
+	}
+	RichTextBoxCtlU.CommonProperties = s 'TimoSoft CommonProperties Class (Unicode)'
+	{
+		CLSID = s '{086BAE5B-794E-4A2D-81DD-BE899D9CCF4C}'
+		CurVer = s 'RichTextBoxCtlU.CommonProperties.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {086BAE5B-794E-4A2D-81DD-BE899D9CCF4C} = s 'TimoSoft CommonProperties Class (Unicode)'
+		{
+			ProgID = s 'RichTextBoxCtlU.CommonProperties.1'
+			VersionIndependentProgID = s 'RichTextBoxCtlU.CommonProperties'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{CD7AC637-45AE-4969-81B8-A56464ECD6C4}'
+		}
+	}
+}
