@@ -690,7 +690,7 @@ STDMETHODIMP OLEObject::GetVerbs(VARIANT* pVerbs, LONG* pCount)
 				SafeArrayGetLBound(pVerbs->parray, 1, &lBound);
 				SafeArrayGetUBound(pVerbs->parray, 1, &uBound);
 				if((*pCount) >= uBound - lBound + 1) {
-					SAFEARRAYBOUND bounds = {*pCount + 1, lBound};
+					SAFEARRAYBOUND bounds = {static_cast<ULONG>(*pCount + 1), lBound};
 					SafeArrayRedim(pVerbs->parray, &bounds);
 				}
 				SafeArrayPutElement(pVerbs->parray, pCount, &element);

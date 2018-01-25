@@ -951,7 +951,7 @@ STDMETHODIMP TextRange::IsWithinTable(VARIANT* pTable/* = NULL*/, VARIANT* pTabl
 				do {
 					hr = pTableTextRange->EndOf(tomRow, tomExtend, NULL);
 					if(hr == S_OK) {
-						CComPtr<ITextRange> pDuplicate = NULL;
+						pDuplicate = NULL;
 						if(SUCCEEDED(pTableTextRange->GetDuplicate(&pDuplicate)) && SUCCEEDED(pDuplicate->Collapse(tomEnd))) {
 							CComPtr<IRichTable> pTableOfEnd = ClassFactory::InitTable(pDuplicate, properties.pOwnerRTB);
 							LONG endNestingLevel = -1;

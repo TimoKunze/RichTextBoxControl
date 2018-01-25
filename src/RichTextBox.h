@@ -7900,11 +7900,11 @@ protected:
 		/// \brief <em>Resets all member variables to their defaults</em>
 		void Reset(void)
 		{
-			pDraggedTextRange = NULL;
-			if(hDragImageList && autoDestroyImgLst) {
-				ImageList_Destroy(hDragImageList);
+			this->pDraggedTextRange = NULL;
+			if(this->hDragImageList && autoDestroyImgLst) {
+				ImageList_Destroy(this->hDragImageList);
 			}
-			hDragImageList = NULL;
+			this->hDragImageList = NULL;
 			autoDestroyImgLst = FALSE;
 			dragImageIsHidden = 1;
 
@@ -7929,7 +7929,7 @@ protected:
 		/// \sa dragImageIsHidden, HideDragImage, IsDragImageVisible
 		void ShowDragImage(BOOL commonDragDropOnly)
 		{
-			if(hDragImageList) {
+			if(this->hDragImageList) {
 				--dragImageIsHidden;
 				if(dragImageIsHidden == 0) {
 					ImageList_DragShowNolock(TRUE);
@@ -7950,7 +7950,7 @@ protected:
 		/// \sa dragImageIsHidden, ShowDragImage, IsDragImageVisible
 		void HideDragImage(BOOL commonDragDropOnly)
 		{
-			if(hDragImageList) {
+			if(this->hDragImageList) {
 				++dragImageIsHidden;
 				if(dragImageIsHidden == 1) {
 					ImageList_DragShowNolock(FALSE);
@@ -7978,31 +7978,31 @@ protected:
 		/// \param[in] pRTB The \c RichTextBox control whose \c CreateLegacyDragImage method shall be called.
 		/// \param[in] hWndRTB The edit control window, that the method will work on to calculate the position
 		///            of the drag image's hotspot.
-		/// \param[in] pDraggedTextRange The range of text to drag.
-		/// \param[in] hDragImageList The imagelist containing the drag image that shall be used to
+		/// \param[in] pDraggedTxtRange The range of text to drag.
+		/// \param[in] hDragImgLst The imagelist containing the drag image that shall be used to
 		///            visualize the drag'n'drop operation. If -1, the method will create the drag image
 		///            itself; if \c NULL, no drag image will be displayed.
 		/// \param[in,out] pXHotSpot The x-coordinate (in pixels) of the drag image's hotspot relative to the
-		///                drag image's upper-left corner. If the \c hDragImageList parameter is set to
-		///                \c NULL, this parameter is ignored. If the \c hDragImageList parameter is set to
+		///                drag image's upper-left corner. If the \c hDragImgLst parameter is set to
+		///                \c NULL, this parameter is ignored. If the \c hDragImgLst parameter is set to
 		///                -1, this parameter is set to the hotspot calculated by the method.
 		/// \param[in,out] pYHotSpot The y-coordinate (in pixels) of the drag image's hotspot relative to the
-		///                drag image's upper-left corner. If the \c hDragImageList parameter is set to
-		///                \c NULL, this parameter is ignored. If the \c hDragImageList parameter is set to
+		///                drag image's upper-left corner. If the \c hDragImgLst parameter is set to
+		///                \c NULL, this parameter is ignored. If the \c hDragImgLst parameter is set to
 		///                -1, this parameter is set to the hotspot calculated by the method.
 		///
 		/// \return An \c HRESULT error code.
 		///
 		/// \sa EndDrag, TextBox::CreateLegacyDragImage
-		HRESULT BeginDrag(RichTextBox* pRTB, HWND hWndRTB, ITextRange* pDraggedTextRange, HIMAGELIST hDragImageList, int* pXHotSpot, int* pYHotSpot)
+		HRESULT BeginDrag(RichTextBox* pRTB, HWND hWndRTB, ITextRange* pDraggedTxtRange, HIMAGELIST hDragImgLst, int* pXHotSpot, int* pYHotSpot)
 		{
 			ATLASSUME(pRTB);
 
 			UINT b = FALSE;
-			if(hDragImageList == static_cast<HIMAGELIST>(LongToHandle(-1))) {
+			if(hDragImgLst == static_cast<HIMAGELIST>(LongToHandle(-1))) {
 				POINT upperLeftPoint = {0};
-				hDragImageList = pRTB->CreateLegacyDragImage(pDraggedTextRange, &upperLeftPoint, NULL);
-				if(!hDragImageList) {
+				hDragImgLst = pRTB->CreateLegacyDragImage(pDraggedTxtRange, &upperLeftPoint, NULL);
+				if(!hDragImgLst) {
 					return E_FAIL;
 				}
 				b = TRUE;
@@ -8012,7 +8012,7 @@ protected:
 				::ScreenToClient(hWndRTB, &mousePosition);
 				if(CWindow(hWndRTB).GetExStyle() & WS_EX_LAYOUTRTL) {
 					SIZE dragImageSize = {0};
-					ImageList_GetIconSize(hDragImageList, reinterpret_cast<PINT>(&dragImageSize.cx), reinterpret_cast<PINT>(&dragImageSize.cy));
+					ImageList_GetIconSize(hDragImgLst, reinterpret_cast<PINT>(&dragImageSize.cx), reinterpret_cast<PINT>(&dragImageSize.cy));
 					*pXHotSpot = upperLeftPoint.x + dragImageSize.cx - mousePosition.x;
 				} else {
 					*pXHotSpot = mousePosition.x - upperLeftPoint.x;
@@ -8025,8 +8025,8 @@ protected:
 			}
 
 			this->autoDestroyImgLst = b;
-			this->hDragImageList = hDragImageList;
-			this->pDraggedTextRange = pDraggedTextRange;
+			this->hDragImageList = hDragImgLst;
+			this->pDraggedTextRange = pDraggedTxtRange;
 
 			dragImageIsHidden = 1;
 			autoScrolling.Reset();
@@ -8039,10 +8039,10 @@ protected:
 		void EndDrag(void)
 		{
 			this->pDraggedTextRange = NULL;
-			if(autoDestroyImgLst && hDragImageList) {
-				ImageList_Destroy(hDragImageList);
+			if(autoDestroyImgLst && this->hDragImageList) {
+				ImageList_Destroy(this->hDragImageList);
 			}
-			hDragImageList = NULL;
+			this->hDragImageList = NULL;
 			dragImageIsHidden = 1;
 			autoScrolling.Reset();
 		}
@@ -8054,7 +8054,7 @@ protected:
 		/// \sa BeginDrag, EndDrag
 		BOOL IsDragging(void)
 		{
-			return (pDraggedTextRange != NULL);
+			return (this->pDraggedTextRange != NULL);
 		}
 
 		/// \brief <em>Performs any tasks that must be done if \c IDropTarget::DragEnter is called</em>

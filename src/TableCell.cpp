@@ -1059,7 +1059,6 @@ STDMETHODIMP TableCell::put_BorderSize(CellBorderConstants border, SHORT newValu
 
 	if(useFallback) {
 		// NOTE: On Windows 7 this does not fail, but also does not have any effect.
-		HWND hWndRTB = properties.GetRTBHWnd();
 		ATLASSERT(IsWindow(hWndRTB));
 		if(IsWindow(hWndRTB)) {
 			TABLEROWPARMS rowParams = {0};

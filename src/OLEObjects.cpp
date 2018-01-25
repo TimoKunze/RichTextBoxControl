@@ -386,7 +386,7 @@ STDMETHODIMP OLEObjects::Add(VARIANT objectReference/* = _variant_t(DISP_E_PARAM
 						fmt.tymed = TYMED_MFPICT;
 
 						STGMEDIUM stg = {0};
-						CLSID clsid = CLSID_NULL;
+						clsid = CLSID_NULL;
 						objectDetails.poleobj->GetUserClassID(&clsid);
 						if(fileToCreateFrom && SysStringLen(fileToCreateFrom) > 0) {
 							stg.hMetaFilePict = OleGetIconOfClass(clsid, fileToCreateFrom, FALSE);

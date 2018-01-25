@@ -1835,9 +1835,9 @@ BOOL RichTextBox::CreateLegacyOLEDragImage(ITextRange* pTextRange, LPSHDRAGIMAGE
 			}
 			ATLASSUME(pImgLst);
 
-			DWORD flags = 0;
-			pImgLst->GetItemFlags(0, &flags);
-			if(flags & ILIF_ALPHA) {
+			DWORD imageFlags = 0;
+			pImgLst->GetItemFlags(0, &imageFlags);
+			if(imageFlags & ILIF_ALPHA) {
 				// the drag image makes use of the alpha channel
 				IMAGEINFO imageInfo = {0};
 				ImageList_GetImageInfo(hImageList, 0, &imageInfo);
@@ -8091,8 +8091,8 @@ STDMETHODIMP RichTextBox::LoadFromFile(BSTR file, FileCreationDispositionConstan
 		varFile.vt = VT_BSTR;
 		varFile.bstrVal = file;
 
-		long flags = fileCreationDisposition | fileType | fileAccessOptions;
-		hr = properties.pTextDocument->Open(&varFile, flags, codePage);
+		long fileFlags = fileCreationDisposition | fileType | fileAccessOptions;
+		hr = properties.pTextDocument->Open(&varFile, fileFlags, codePage);
 		*pSucceeded = BOOL2VARIANTBOOL(SUCCEEDED(hr));
 		hr = S_OK;
 
@@ -8355,8 +8355,8 @@ STDMETHODIMP RichTextBox::SaveToFile(BSTR file/* = NULL*/, FileCreationDispositi
 				}
 			}
 
-			long flags = fileCreationDisposition | fileType | fileAccessOptions;
-			hr = properties.pTextDocument->Save(&varFile, flags, codePage);
+			long fileFlags = fileCreationDisposition | fileType | fileAccessOptions;
+			hr = properties.pTextDocument->Save(&varFile, fileFlags, codePage);
 		//}
 		VariantClear(&varFile);
 		*pSucceeded = BOOL2VARIANTBOOL(SUCCEEDED(hr));
@@ -11063,41 +11063,41 @@ void RichTextBox::SendConfigurationMessages(void)
 		properties.pTextDocument->SetDefaultTabStop(properties.defaultTabWidth);
 		CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 		if(pTextDocument2) {
-			long options = 0;
+			long mathOptions = 0;
 			switch(properties.mathLineBreakBehavior) {
 				case mlbbBreakBeforeOperator:
-					options = tomMathBrkBinBefore;
+					mathOptions = tomMathBrkBinBefore;
 					break;
 				case mlbbBreakAfterOperator:
-					options = tomMathBrkBinAfter;
+					mathOptions = tomMathBrkBinAfter;
 					break;
 				case mlbbDuplicateOperatorMinusMinus:
-					options = tomMathBrkBinDup | tomMathBrkBinSubMM;
+					mathOptions = tomMathBrkBinDup | tomMathBrkBinSubMM;
 					break;
 				case mlbbDuplicateOperatorPlusMinus:
-					options = tomMathBrkBinDup | tomMathBrkBinSubPM;
+					mathOptions = tomMathBrkBinDup | tomMathBrkBinSubPM;
 					break;
 				case mlbbDuplicateOperatorMinusPlus:
-					options = tomMathBrkBinDup | tomMathBrkBinSubMP;
+					mathOptions = tomMathBrkBinDup | tomMathBrkBinSubMP;
 					break;
 			}
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(options, tomMathBrkBinMask | tomMathBrkBinSubMask)));
-			options = 0;
+			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+			mathOptions = 0;
 			switch(properties.defaultMathZoneHAlignment) {
 				case halLeft:
-					options = tomMathDispAlignLeft;
+					mathOptions = tomMathDispAlignLeft;
 					break;
 				case halCenter:
-					options = tomMathDispAlignCenter;
+					mathOptions = tomMathDispAlignCenter;
 					break;
 				case halRight:
-					options = tomMathDispAlignRight;
+					mathOptions = tomMathDispAlignRight;
 					break;
 				default:
-					options = tomMathDispAlignCenter;
+					mathOptions = tomMathDispAlignCenter;
 					break;
 			}
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(options, tomMathDispAlignMask)));
+			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathDispAlignMask)));
 			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask)));
 			switch(properties.integralLimitsLocation) {
 				case llOnSide:
@@ -11363,7 +11363,7 @@ HitTestConstants RichTextBox::HitTest(LONG x, LONG y)
 						pLinkRange->GetStart(&s);
 						pLinkRange->GetEnd(&e);
 
-						LONG hitLineIndex = 0;
+						hitLineIndex = 0;
 						LONG startLineIndex = 0;
 						LONG endLineIndex = 0;
 						CComPtr<ITextRange> p = NULL;
@@ -11405,9 +11405,9 @@ HitTestConstants RichTextBox::HitTest(LONG x, LONG y)
 							}
 						} else {
 							// save selection
-							long flags = 0;
-							pTextSelection->GetFlags(&flags);
-							if(flags & tomSelStartActive) {
+							long selectionFlags = 0;
+							pTextSelection->GetFlags(&selectionFlags);
+							if(selectionFlags & tomSelStartActive) {
 								LONG tmp = selection.cpMin;
 								selection.cpMin = selection.cpMax;
 								selection.cpMax = tmp;

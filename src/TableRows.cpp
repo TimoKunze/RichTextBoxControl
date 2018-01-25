@@ -595,7 +595,7 @@ STDMETHODIMP TableRows::Add(LONG insertAt/* = -1*/, HAlignmentConstants horizont
 				// update end of properties.pTableTextRange
 				pRow = NULL;
 				if(SUCCEEDED(get_Item(rowCount - 1, ritIndex, &pRow))) {
-					CComQIPtr<ITextRange> pRowTextRange = pRow;
+					pRowTextRange = pRow;
 					if(pRowTextRange) {
 						if(SUCCEEDED(pRowTextRange->EndOf(tomRow, tomExtend, NULL))) {
 							LONG startOfNextRowCandidate = 0;
