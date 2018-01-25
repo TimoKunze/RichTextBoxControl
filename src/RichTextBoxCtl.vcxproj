@@ -127,11 +127,11 @@
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - Unicode|Win32'">$(ProjectName)U</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug - ANSI|Win32'">$(ProjectName)A</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='Release - ANSI|Win32'">$(ProjectName)A</TargetName>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - ANSI|Win32'">D:\Projekte\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - Unicode|Win32'">D:\Projekte\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - ANSI|Win32'">D:\Projekte\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - Unicode|Win32'">D:\Projekte\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
-    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">D:\Projekte\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - ANSI|Win32'">D:\Projects\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug - Unicode|Win32'">D:\Projects\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - ANSI|Win32'">D:\Projects\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release - Unicode|Win32'">D:\Projects\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
+    <IncludePath Condition="'$(Configuration)|$(Platform)'=='Template|Win32'">D:\Projects\Libraries\WTL\Include;$(IncludePath);$(VCInstallDir)atlmfc\include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug - ANSI|Win32'">
     <PreBuildEvent>
@@ -167,7 +167,7 @@
       <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <AdditionalOptions>
       </AdditionalOptions>
@@ -351,7 +351,7 @@
       <SmallerTypeCheck>true</SmallerTypeCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <BufferSecurityCheck>true</BufferSecurityCheck>
-      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <DisableLanguageExtensions>false</DisableLanguageExtensions>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
       <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
