@@ -4458,7 +4458,11 @@ STDMETHODIMP RichTextBox::put_DefaultMathZoneHAlignment(HAlignmentConstants newV
 						options = tomMathDispAlignCenter;
 						break;
 				}
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(options, tomMathDispAlignMask)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(options, tomMathDispAlignMask)));
+				#else
+					pTextDocument2->SetMathProperties(options, tomMathDispAlignMask);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_DEFAULTMATHZONEHALIGNMENT);
@@ -4527,7 +4531,11 @@ STDMETHODIMP RichTextBox::put_DenoteEmptyMathArguments(DenoteEmptyMathArgumentsC
 		if(properties.pTextDocument) {
 			CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 			if(pTextDocument2) {
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask)));
+				#else
+					pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_DENOTEEMPTYMATHARGUMENTS);
@@ -5400,7 +5408,11 @@ STDMETHODIMP RichTextBox::put_GrowNAryOperators(VARIANT_BOOL newValue)
 		if(properties.pTextDocument) {
 			CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 			if(pTextDocument2) {
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow)));
+				#else
+					pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_GROWNARYOPERATORS);
@@ -5685,10 +5697,18 @@ STDMETHODIMP RichTextBox::put_IntegralLimitsLocation(LimitsLocationConstants new
 			if(pTextDocument2) {
 				switch(properties.integralLimitsLocation) {
 					case llOnSide:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver)));
+						#else
+							pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver);
+						#endif
 						break;
 					case llUnderAndOver:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver);
+						#endif
 						break;
 				}
 			}
@@ -5974,19 +5994,39 @@ STDMETHODIMP RichTextBox::put_MathLineBreakBehavior(MathLineBreakBehaviorConstan
 			if(pTextDocument2) {
 				switch(properties.mathLineBreakBehavior) {
 					case mlbbBreakBeforeOperator:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinBefore, tomMathBrkBinMask)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinBefore, tomMathBrkBinMask)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathBrkBinBefore, tomMathBrkBinMask);
+						#endif
 						break;
 					case mlbbBreakAfterOperator:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinAfter, tomMathBrkBinMask)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinAfter, tomMathBrkBinMask)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathBrkBinAfter, tomMathBrkBinMask);
+						#endif
 						break;
 					case mlbbDuplicateOperatorMinusMinus:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMM, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMM, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMM, tomMathBrkBinMask | tomMathBrkBinSubMask);
+						#endif
 						break;
 					case mlbbDuplicateOperatorPlusMinus:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubPM, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubPM, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubPM, tomMathBrkBinMask | tomMathBrkBinSubMask);
+						#endif
 						break;
 					case mlbbDuplicateOperatorMinusPlus:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMP, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMP, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathBrkBinDup | tomMathBrkBinSubMP, tomMathBrkBinMask | tomMathBrkBinSubMask);
+						#endif
 						break;
 				}
 			}
@@ -6308,10 +6348,18 @@ STDMETHODIMP RichTextBox::put_NAryLimitsLocation(LimitsLocationConstants newValu
 			if(pTextDocument2) {
 				switch(properties.nAryLimitsLocation) {
 					case llOnSide:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup)));
+						#else
+							pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup);
+						#endif
 						break;
 					case llUnderAndOver:
-						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup)));
+						#ifdef DEBUG
+							ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup)));
+						#else
+							pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup);
+						#endif
 						break;
 				}
 			}
@@ -6472,7 +6520,11 @@ STDMETHODIMP RichTextBox::put_RawSubScriptAndSuperScriptOperators(VARIANT_BOOL n
 		if(properties.pTextDocument) {
 			CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 			if(pTextDocument2) {
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged)));
+				#else
+					pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_RAWSUBSCRIPTANDSUPERSCRIPTOPERATORS);
@@ -6799,7 +6851,11 @@ STDMETHODIMP RichTextBox::put_RightToLeftMathZones(VARIANT_BOOL newValue)
 		if(properties.pTextDocument) {
 			CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 			if(pTextDocument2) {
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl)));
+				#else
+					pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_RIGHTTOLEFTMATHZONES);
@@ -7477,7 +7533,11 @@ STDMETHODIMP RichTextBox::put_UseSmallerFontForNestedFractions(VARIANT_BOOL newV
 		if(properties.pTextDocument) {
 			CComQIPtr<ITextDocument2> pTextDocument2 = properties.pTextDocument;
 			if(pTextDocument2) {
-				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX)));
+				#ifdef DEBUG
+					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX)));
+				#else
+					pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX);
+				#endif
 			}
 		}
 		FireOnChanged(DISPID_RTB_USESMALLERFONTFORNESTEDFRACTIONS);
@@ -8476,7 +8536,11 @@ LRESULT RichTextBox::OnCreate(UINT message, WPARAM wParam, LPARAM lParam, BOOL& 
 	previousSelectedRange.cpMin = -1;
 	previousSelectedRange.cpMax = -1;
 	nextEmbeddedObjectIndex = 0;
-	ATLASSERT(SUCCEEDED(StgCreateStorageEx(NULL, STGM_READWRITE | STGM_SHARE_EXCLUSIVE | STGM_DELETEONRELEASE, STGFMT_STORAGE, 0, NULL, NULL, IID_IStorage, reinterpret_cast<LPVOID*>(&pDocumentStorage))));
+	#ifdef DEBUG
+		ATLASSERT(SUCCEEDED(StgCreateStorageEx(NULL, STGM_READWRITE | STGM_SHARE_EXCLUSIVE | STGM_DELETEONRELEASE, STGFMT_STORAGE, 0, NULL, NULL, IID_IStorage, reinterpret_cast<LPVOID*>(&pDocumentStorage))));
+	#else
+		StgCreateStorageEx(NULL, STGM_READWRITE | STGM_SHARE_EXCLUSIVE | STGM_DELETEONRELEASE, STGFMT_STORAGE, 0, NULL, NULL, IID_IStorage, reinterpret_cast<LPVOID*>(&pDocumentStorage));
+	#endif
 
 	LRESULT lr = DefWindowProc(message, wParam, lParam);
 
@@ -11081,7 +11145,11 @@ void RichTextBox::SendConfigurationMessages(void)
 					mathOptions = tomMathBrkBinDup | tomMathBrkBinSubMP;
 					break;
 			}
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+			#ifdef DEBUG
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathBrkBinMask | tomMathBrkBinSubMask)));
+			#else
+				pTextDocument2->SetMathProperties(mathOptions, tomMathBrkBinMask | tomMathBrkBinSubMask);
+			#endif
 			mathOptions = 0;
 			switch(properties.defaultMathZoneHAlignment) {
 				case halLeft:
@@ -11097,28 +11165,56 @@ void RichTextBox::SendConfigurationMessages(void)
 					mathOptions = tomMathDispAlignCenter;
 					break;
 			}
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathDispAlignMask)));
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask)));
+			#ifdef DEBUG
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(mathOptions, tomMathDispAlignMask)));
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask)));
+			#else
+				pTextDocument2->SetMathProperties(mathOptions, tomMathDispAlignMask);
+				pTextDocument2->SetMathProperties(properties.denoteEmptyMathArguments, tomMathDocEmptyArgMask);
+			#endif
 			switch(properties.integralLimitsLocation) {
 				case llOnSide:
-					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver)));
+					#ifdef DEBUG
+						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver)));
+					#else
+						pTextDocument2->SetMathProperties(0, tomMathDispIntUnderOver);
+					#endif
 					break;
 				case llUnderAndOver:
-					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver)));
+					#ifdef DEBUG
+						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver)));
+					#else
+						pTextDocument2->SetMathProperties(tomMathDispIntUnderOver, tomMathDispIntUnderOver);
+					#endif
 					break;
 			}
 			switch(properties.nAryLimitsLocation) {
 				case llOnSide:
-					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup)));
+					#ifdef DEBUG
+						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup)));
+					#else
+						pTextDocument2->SetMathProperties(tomMathDispNarySubSup, tomMathDispNarySubSup);
+					#endif
 					break;
 				case llUnderAndOver:
-					ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup)));
+					#ifdef DEBUG
+						ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup)));
+					#else
+						pTextDocument2->SetMathProperties(0, tomMathDispNarySubSup);
+					#endif
 					break;
 			}
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow)));
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged)));
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl)));
-			ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX)));
+			#ifdef DEBUG
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow)));
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged)));
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl)));
+				ATLASSERT(SUCCEEDED(pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX)));
+			#else
+				pTextDocument2->SetMathProperties(properties.growNAryOperators ? tomMathDispNaryGrow : 0, tomMathDispNaryGrow);
+				pTextDocument2->SetMathProperties(properties.rawSubScriptAndSuperScriptOperators ? tomMathDocSbSpOpUnchanged : 0, tomMathDocSbSpOpUnchanged);
+				pTextDocument2->SetMathProperties(properties.rightToLeftMathZones ? tomMathEnableRtl : 0, tomMathEnableRtl);
+				pTextDocument2->SetMathProperties(properties.useSmallerFontForNestedFractions ? tomMathDispFracTeX : 0, tomMathDispFracTeX);
+			#endif
 		}
 	}
 }
