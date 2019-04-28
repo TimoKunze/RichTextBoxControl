@@ -76,7 +76,7 @@ BEGIN
 #else
             VALUE "InternalName", "RichTextBoxCtlA.ocx"
 #endif
-            VALUE "LegalCopyright", "Copyright (C) 2018 Timo ""TimoSoft"" Kunze"
+            VALUE "LegalCopyright", "Copyright (C) 2018-2019 Timo ""TimoSoft"" Kunze"
 #ifdef _UNICODE
             VALUE "OriginalFilename", "RichTextBoxCtlU.ocx"
 #else
