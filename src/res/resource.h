@@ -13,7 +13,7 @@
 #define VERSION_BUILD																202
 #define STRFILEVERSION															"1.0.0.202"
 #define STRPRODUCTVERSION														"1.0"
-#define STRTIMESTAMP																"2019/04/28 17:10:41"
+#define STRTIMESTAMP																"2019/04/28 17:14:22"
 
 #define IDB_RICHTEXTBOX															1
 #define IDB_ABOUT																		3
