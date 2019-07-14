@@ -29,6 +29,7 @@
 /// - Windows Server 2012 R2
 /// - Windows 10
 /// - Windows Server 2016
+/// - Windows Server 2019
 ///
 /// Some features have additional requirements which are mentioned in the affected feature's
 /// documentation.\n
